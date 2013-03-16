@@ -1,4 +1,3 @@
 # Console game of Tic Tac Toe  
 
-## To play
-ruby tictactoe.rb
+To play, simply run this in a terminal: ruby tictactoe.rb
