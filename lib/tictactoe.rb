@@ -153,6 +153,5 @@ class Ttt
 	end
 end	
 
-
 tictactoe = Ttt.new
 tictactoe.game_start
