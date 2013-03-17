@@ -1,8 +1,14 @@
 require 'minitest/autorun'
+require_relative "../lib/player"
 
 describe "Player" do
 
+	before do
+		@player1 = Player.new("Ace")
+	end
+
 	it "has a name" do
+		@player1.name.must_equal("Ace")
 	end
 
 	it "takes only valid inputs listed on the grid (ex: a1)" do
@@ -13,8 +19,8 @@ describe "Player" do
 end
 
 describe "TicTacToe game" do
-	test_game = Ttt.new
-	test_game.game_start
+	# test_game = Ttt.new
+	# test_game.game_start
 
 	it "has a grid" do
 	end

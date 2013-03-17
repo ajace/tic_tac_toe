@@ -1,43 +1,5 @@
 #!/usr/bin/env ruby
-
-class Player
-	attr_accessor :name
-
-	def initialize
-		puts "What is player's name?"
-		@name = gets.chomp
-		@valid_inputs = [:a1, :a2, :a3, :b1, :b2, :b3, :c1, :c2, :c3]
-	end
-
-	# returns 'exit' or symbol
-	def move(grid) 
-		puts "#{self.name}, choose a spot on the grid(ex: a1), or 'exit' to quit: "
-		pinput = gets.chomp
-
-		while pinput != 'exit'	
-			pinput_sym = pinput.to_sym  # change input to symbol
-
-			if grid[pinput_sym] == 'x' || grid[pinput_sym] == 'o'
-				print "That spot is already taken. Try again. "
-			elsif grid[pinput_sym] == ''
-				print "You didn't enter anything."
-			else
-				if (@valid_inputs).member?(pinput_sym)
-					return pinput_sym
-				else
-					puts "Incorrect input. Please try again."
-					puts "\n"
-				end
-			end
-
-			puts "#{self.name}, choose a spot on the grid(ex: a1), or 'exit' to quit: "
-			pinput = gets.chomp  # no satisfactory input, try again			
-		end
-
-		return 'exit'
-	end
-		
-end
+require_relative 'player'
 
 class Ttt
 	attr_accessor :grid
@@ -60,11 +22,16 @@ class Ttt
 	      [:a3,:b2,:c1]
 	    ]
 
-		@player1 = Player.new
-		@player2 = Player.new
+		@player1 = Player.new(get_name)
+		@player2 = Player.new(get_name)
 
 		@current_player = @player1  # initially start with player1 starting
 	end	
+
+	def get_name
+		puts "What is player's name?"
+		return gets.chomp
+	end
 	
 	def game_start		
 		game_over = false
